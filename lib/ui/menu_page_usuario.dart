@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:progarden/firebaseauth/authentication_service.dart';
 import 'package:provider/provider.dart';
 
+import 'listview_plantas_usuario.dart';
 
 class Menu_page_usuario extends StatelessWidget {
   @override
@@ -30,6 +31,10 @@ class Menu_page_usuario extends StatelessWidget {
                 //Fluttertoast.showToast(msg: "Bienvenido-" +context.read<AuthenticationService>().get_email());
                 //Fluttertoast.showToast(msg: "Bienvenido-" + str_email);
                 //Navigator.push(context, MaterialPageRoute(builder: (context) => ListViewMunicipio()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ListViewPlantaUsuario()));
               },
               child: Text('Lista de plantas'),
             ),

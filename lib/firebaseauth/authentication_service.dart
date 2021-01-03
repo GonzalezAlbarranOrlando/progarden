@@ -15,14 +15,16 @@ class AuthenticationService{
   Stream<User> get authStateChanges => _firebaseAuth.authStateChanges();
 
   Future<void> signOut() async {
-    correo = "";
+    id_firebaseAuth = "";
+    correo_firebaseAuth = "";
     await _firebaseAuth.signOut();
   }
 
   Future<String> signIn({String email, String password}) async {
     try{
       await _firebaseAuth.signInWithEmailAndPassword(email: email, password: password);
-      correo = email;
+      id_firebaseAuth = _firebaseAuth.currentUser.uid;
+      correo_firebaseAuth = email;
       return "Sign In";
     }on FirebaseAuthException catch(e){
       return e.message;
@@ -41,8 +43,6 @@ class AuthenticationService{
         'correo': email,
         'contrasenia': password
       });
-      //asignacion del string correo
-      correo = email;
       //borrar sesion
       await _firebaseAuth.signOut();
       //retornar

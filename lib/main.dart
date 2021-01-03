@@ -9,7 +9,8 @@ import 'package:provider/provider.dart';
 
 import 'firebaseauth/authentication_service.dart';
 
-String correo = "";
+String correo_firebaseAuth = "";
+String id_firebaseAuth = "";
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -46,10 +47,10 @@ class AuthenticationWrapper extends StatelessWidget {
   Widget build(BuildContext context) {
     final firebaseuser = context.watch<User>();
     if (firebaseuser != null) {
-      if (correo == "consultor@gmail.com") {
+      if (correo_firebaseAuth == "consultor@gmail.com") {
         Fluttertoast.showToast(msg: "Bienvenido Consultor");
         return Menu_page_usuario();
-      } else if (correo != "") {
+      } else if (correo_firebaseAuth != "") {
         Fluttertoast.showToast(msg: "Bienvenido:" + firebaseuser.uid);
         return Menu_page_usuario();
       }
