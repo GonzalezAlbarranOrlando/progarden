@@ -60,6 +60,7 @@ class _ListViewPlantaUsuarioState extends State<ListViewPlantaUsuario> {
               itemCount: items.length,
               padding: EdgeInsets.only(top: 12.0),
               itemBuilder: (context, position) {
+                if (items[position].id_usuario == id_firebaseAuth) {
                 return Column(
                   children: <Widget>[
                     Divider(
@@ -89,7 +90,7 @@ class _ListViewPlantaUsuarioState extends State<ListViewPlantaUsuario> {
                                     backgroundColor: Colors.cyan,
                                     radius: 17.0,
                                     child: Text(
-                                      '${position+1}',
+                                      '',
                                       style: TextStyle(
                                         color: Colors.black,
                                         fontSize: 15.0,
@@ -118,6 +119,9 @@ class _ListViewPlantaUsuarioState extends State<ListViewPlantaUsuario> {
                     ),
                   ],
                 );
+                }else{
+                  return Column();
+                }
               }),
         ),
         floatingActionButton: FloatingActionButton(
