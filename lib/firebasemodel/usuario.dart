@@ -19,12 +19,12 @@ class Usuario{
     this._contrasenia = obj['altitud'];
   }
 
-  String get id_igecem => _id_usuario;
+  String get id_usuario => _id_usuario;
   String get nombre =>_nombre;
-  String get significado => _apellido_pat;
-  String get cabeceramun => _apellido_mat;
-  String get superficie => _correo;
-  String get altitud => _contrasenia;
+  String get apellido_pat => _apellido_pat;
+  String get apellido_mat => _apellido_mat;
+  String get correo => _correo;
+  String get contrasenia => _contrasenia;
 
 
   Usuario.fromSnapShop(DataSnapshot snapshot){
