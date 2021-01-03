@@ -4,6 +4,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:progarden/registro.dart';
+import 'package:progarden/ui/menu_page_usuario.dart';
 import 'package:provider/provider.dart';
 
 import 'firebaseauth/authentication_service.dart';
@@ -45,14 +46,12 @@ class AuthenticationWrapper extends StatelessWidget {
   Widget build(BuildContext context) {
     final firebaseuser = context.watch<User>();
     if (firebaseuser != null) {
-      if (correo == "administrador@gmail.com") {
-        Fluttertoast.showToast(msg: "Bienvenido Administrador");
-        //return Menu_page();
-      } else if (correo == "consultor@gmail.com") {
+      if (correo == "consultor@gmail.com") {
         Fluttertoast.showToast(msg: "Bienvenido Consultor");
-        //return Menu_page();
-      } else {
-        Fluttertoast.showToast(msg: "Ingresa datos correctos");
+        return Menu_page_usuario();
+      } else if (correo != "") {
+        Fluttertoast.showToast(msg: "Bienvenido:" + firebaseuser.uid);
+        return Menu_page_usuario();
       }
     }
     return Login_page();
@@ -76,62 +75,65 @@ class Login_page extends StatelessWidget {
         ),
         body: Form(
             key: _formkey,
-            child: Column(
-              children: <Widget>[
-                TextFormField(
-                  controller: emailController,
-                  keyboardType: TextInputType.emailAddress,
-                  decoration: InputDecoration(
-                      labelText: "Ingresa el correo electrónico"),
-                ),
-                TextFormField(
-                  controller: passwordController,
-                  keyboardType: TextInputType.number,
-                  decoration:
-                      InputDecoration(labelText: "Ingresa la contraseña"),
-                  obscureText: true,
-                ),
-                RaisedButton(
-                  onPressed: () {
-                    correo = emailController.text.trim();
-                    context.read<AuthenticationService>().signIn(
-                        email: emailController.text.trim(),
-                        password: passwordController.text.trim());
-                  },
-                  child: Text('Ingresar'),
-                  color: Colors.deepOrangeAccent,
-                  textColor: Colors.white,
-                ),
-                Container(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Text(
-                        "¿No tienes cuenta?",
-                        style: TextStyle(fontWeight: FontWeight.w400),
+            child: SingleChildScrollView(
+                padding: const EdgeInsets.all(10.0),
+                child: Column(
+                  children: <Widget>[
+                    TextFormField(
+                      controller: emailController,
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: InputDecoration(
+                          labelText: "Correo electrónico"),
+                    ),
+                    TextFormField(
+                      controller: passwordController,
+                      keyboardType: TextInputType.number,
+                      decoration:
+                          InputDecoration(labelText: "Contraseña"),
+                      obscureText: true,
+                    ),
+                    RaisedButton(
+                      onPressed: () {
+                        context.read<AuthenticationService>().signIn(
+                            email: emailController.text.trim(),
+                            password: passwordController.text.trim());
+                      },
+                      child: Text('Ingresar'),
+                      color: Colors.deepOrangeAccent,
+                      textColor: Colors.white,
+                    ),
+                    Container(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Text(
+                            "¿No tienes cuenta?",
+                            style: TextStyle(fontWeight: FontWeight.w400),
+                          ),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              //Navigator.of(context).pop(main());
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => RegistroScreen()));
+                            },
+                            child: Text(
+                              "Registrarse",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w800,
+                                  color: Colors.orange[200],
+                                  fontSize: 19),
+                            ),
+                          )
+                        ],
                       ),
-                      SizedBox(
-                        width: 5,
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          //Navigator.of(context).pop(main());
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => RegistroScreen()));
-                        },
-                        child: Text(
-                          "Registrarse",
-                          style: TextStyle(
-                              fontWeight: FontWeight.w800,
-                              color: Colors.orange[200],
-                              fontSize: 19),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              ],
-            )),
+                    ),
+                  ],
+                ))),
       ),
     );
   }

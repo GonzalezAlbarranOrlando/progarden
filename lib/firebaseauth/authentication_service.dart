@@ -4,6 +4,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 
+import '../main.dart';
+
 class AuthenticationService{
 
   final databaseReference = FirebaseDatabase.instance.reference();
@@ -13,6 +15,7 @@ class AuthenticationService{
   Stream<User> get authStateChanges => _firebaseAuth.authStateChanges();
 
   Future<void> signOut() async {
+    correo = "";
     await _firebaseAuth.signOut();
   }
 
@@ -37,6 +40,11 @@ class AuthenticationService{
         'correo': email,
         'contrasenia': password
       });
+      //asignacion del string correo
+      correo = email;
+      //borrar sesion
+      await _firebaseAuth.signOut();
+      //retornar
       return "Sign Up";
     }on FirebaseAuthException catch(e){
       return e.message;
