@@ -82,8 +82,13 @@ class Login_page extends StatelessWidget {
                     TextFormField(
                       controller: emailController,
                       keyboardType: TextInputType.emailAddress,
-                      decoration: InputDecoration(
-                          labelText: "Correo electrónico"),
+                      decoration: InputDecoration(labelText: "Correo electrónico"),
+                      validator: (text) {
+                        if (text == null || text.isEmpty) {
+                          return 'Campo obligatorio';
+                        }
+                        return null;
+                      },
                     ),
                     TextFormField(
                       controller: passwordController,
@@ -91,9 +96,20 @@ class Login_page extends StatelessWidget {
                       decoration:
                           InputDecoration(labelText: "Contraseña"),
                       obscureText: true,
+                      validator: (text) {
+                        if (text == null || text.isEmpty) {
+                          return 'Campo obligatorio';
+                        } else if (!(text.length > 5)) {
+                          return 'La contraseña debe contener más de 5 caracteres';
+                        }
+                        return null;
+                      },
                     ),
                     RaisedButton(
                       onPressed: () {
+                        if (!_formkey.currentState.validate()) {
+                          return;
+                        }
                         context.read<AuthenticationService>().signIn(
                             email: emailController.text.trim(),
                             password: passwordController.text.trim());

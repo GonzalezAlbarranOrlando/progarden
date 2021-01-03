@@ -10,13 +10,19 @@ class RegistroScreen extends StatefulWidget {
 }
 
 class _RegistroScreen extends State<RegistroScreen> {
-  String str_nombre = "", str_apellido_pat = "", str_apellido_mat="", str_correo="", str_contrasenia="", str_conf_contrasenia="";
+  String str_nombre = "",
+      str_apellido_pat = "",
+      str_apellido_mat = "",
+      str_correo = "",
+      str_contrasenia = "",
+      str_conf_contrasenia = "";
   final TextEditingController nombreController = TextEditingController();
   final TextEditingController apellido_patController = TextEditingController();
   final TextEditingController apellido_matController = TextEditingController();
   final TextEditingController correoController = TextEditingController();
   final TextEditingController contraseniaController = TextEditingController();
-  final TextEditingController conf_contraseniaController = TextEditingController();
+  final TextEditingController conf_contraseniaController =
+      TextEditingController();
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
 
   @override
@@ -40,8 +46,8 @@ class _RegistroScreen extends State<RegistroScreen> {
                       controller: nombreController,
                       keyboardType: TextInputType.text,
                       decoration: InputDecoration(labelText: "Nombre"),
-                      validator: (text){
-                        if(text == null || text.isEmpty){
+                      validator: (text) {
+                        if (text == null || text.isEmpty) {
                           return 'Campo obligatorio';
                         }
                         return null;
@@ -50,9 +56,10 @@ class _RegistroScreen extends State<RegistroScreen> {
                     TextFormField(
                       controller: apellido_patController,
                       keyboardType: TextInputType.text,
-                      decoration: InputDecoration(labelText: "Apellido Paterno"),
-                      validator: (text){
-                        if(text == null || text.isEmpty){
+                      decoration:
+                          InputDecoration(labelText: "Apellido Paterno"),
+                      validator: (text) {
+                        if (text == null || text.isEmpty) {
                           return 'Campo obligatorio';
                         }
                         return null;
@@ -61,9 +68,10 @@ class _RegistroScreen extends State<RegistroScreen> {
                     TextFormField(
                       controller: apellido_matController,
                       keyboardType: TextInputType.text,
-                      decoration: InputDecoration(labelText: "Apellido Materno"),
-                      validator: (text){
-                        if(text == null || text.isEmpty){
+                      decoration:
+                          InputDecoration(labelText: "Apellido Materno"),
+                      validator: (text) {
+                        if (text == null || text.isEmpty) {
                           return 'Campo obligatorio';
                         }
                         return null;
@@ -73,8 +81,8 @@ class _RegistroScreen extends State<RegistroScreen> {
                       controller: correoController,
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(labelText: "Correo"),
-                      validator: (text){
-                        if(text == null || text.isEmpty){
+                      validator: (text) {
+                        if (text == null || text.isEmpty) {
                           return 'Campo obligatorio';
                         }
                         return null;
@@ -84,10 +92,10 @@ class _RegistroScreen extends State<RegistroScreen> {
                       controller: contraseniaController,
                       keyboardType: TextInputType.text,
                       decoration: InputDecoration(labelText: "Contraseña"),
-                      validator: (text){
-                        if(text == null || text.isEmpty){
+                      validator: (text) {
+                        if (text == null || text.isEmpty) {
                           return 'Campo obligatorio';
-                        }else if(!(text.length > 5)){
+                        } else if (!(text.length > 5)) {
                           return 'La contraseña debe contener más de 5 caracteres';
                         }
                         return null;
@@ -97,12 +105,13 @@ class _RegistroScreen extends State<RegistroScreen> {
                     TextFormField(
                       controller: conf_contraseniaController,
                       keyboardType: TextInputType.text,
-                      decoration: InputDecoration(labelText: "Confirmar contraseña"),
+                      decoration:
+                          InputDecoration(labelText: "Confirmar contraseña"),
                       obscureText: true,
-                      validator: (text){
-                        if(text == null || text.isEmpty){
+                      validator: (text) {
+                        if (text == null || text.isEmpty) {
                           return 'Campo obligatorio';
-                        }else if(!(text.length > 5)){
+                        } else if (!(text.length > 5)) {
                           return 'La contraseña debe contener más de 5 caracteres';
                         }
                         return null;
@@ -118,16 +127,19 @@ class _RegistroScreen extends State<RegistroScreen> {
                         str_apellido_mat = apellido_matController.text.trim();
                         str_correo = correoController.text.trim();
                         str_contrasenia = contraseniaController.text.trim();
-                        str_conf_contrasenia = conf_contraseniaController.text.trim();
-                        if(validacion()){
-                          context.read<AuthenticationService>().createUser(
-                              nombre: str_nombre,
-                              apellido_pat: str_apellido_pat,
-                              apellido_mat: str_apellido_mat,
-                              email: str_correo,
-                              password: str_contrasenia);
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => MyApp()));
+                        str_conf_contrasenia =
+                            conf_contraseniaController.text.trim();
+                        if (!validacion()) {
+                          return;
                         }
+                        context.read<AuthenticationService>().createUser(
+                            nombre: str_nombre,
+                            apellido_pat: str_apellido_pat,
+                            apellido_mat: str_apellido_mat,
+                            email: str_correo,
+                            password: str_contrasenia);
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => MyApp()));
                       },
                       child: Text('Registrarse'),
                       color: Colors.deepOrangeAccent,
@@ -170,8 +182,9 @@ class _RegistroScreen extends State<RegistroScreen> {
           )),
     );
   }
-  bool validacion(){
-    if(str_contrasenia != str_conf_contrasenia){
+
+  bool validacion() {
+    if (str_contrasenia != str_conf_contrasenia) {
       Fluttertoast.showToast(msg: "Las contraseñas no coinciden");
       return false;
     }
