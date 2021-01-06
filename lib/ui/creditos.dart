@@ -25,12 +25,32 @@ class Creditos extends StatelessWidget {
         ),
         body: Center(
             child: Column(
-          children: <Widget>[
-            Padding(
-              padding: EdgeInsets.only(top: 10.0),
+              children: <Widget>[
+
+
+                Image.asset(
+                  'images/progarden.png',
+                  width: 600,
+                  height: 240,
+                  fit: BoxFit.cover,
+                ),
+
+                Container(
+                  child:
+                  Text("INSTITUTO TECNOLÓGICO DE TOLUCA\n\n"
+                      "INGENIERÍA EN SISTEMAS COMPUTACIONALES\n\n"
+                      "PROGRAMACIÓN AVANZADA PARA EL DESARROLLODE APLICACIONES MÓVILES\n\n"
+                      "-GARCÍA SAAVEDRA AMÉRICA LUCERO\n"
+                      "-GONZÁLEZ ALBARRÁN ORLANDO\n"
+                      "-GONZÁLEZ VALLEJO ARIANA JAQUELIN\n\n"
+                      "Versión 1.0",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontWeight: FontWeight.normal, fontSize: 15),
+                  ),
             ),
-            Text("INSTITUTO TECNOLÓGICO DE TOLUCA\n"
-                "INGENIERÍA EN SISTEMAS COMPUTACIONALES\n"),
+
+
+
           ],
         )),
       ),
