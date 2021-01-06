@@ -93,7 +93,7 @@ class Login_page extends StatelessWidget {
                     ),
                     TextFormField(
                       controller: passwordController,
-                      keyboardType: TextInputType.number,
+                      keyboardType: TextInputType.text,
                       decoration:
                           InputDecoration(labelText: "Contraseña"),
                       obscureText: true,

@@ -9,6 +9,8 @@ import 'package:progarden/ui/plantas_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/services.dart';
 
+import 'menu_page_usuario.dart';
+
 final plantaReference = FirebaseDatabase.instance.reference().child('planta');
 
 class ListViewPlantaUsuario extends StatefulWidget {
@@ -48,10 +50,10 @@ class _ListViewPlantaUsuarioState extends State<ListViewPlantaUsuario> {
           centerTitle: true,
           backgroundColor: Colors.deepOrangeAccent,
           leading: IconButton(
-            icon: Icon(Icons.clear),
+            icon: Icon(Icons.arrow_back),
             onPressed: () {
-              context.read<AuthenticationService>().signOut();
-              Navigator.push(context, MaterialPageRoute(builder: (context) => MyApp()));
+              //context.read<AuthenticationService>().signOut();
+              Navigator.push(context, MaterialPageRoute(builder: (context) => Menu_page_usuario()));
             },
           ),
         ),
