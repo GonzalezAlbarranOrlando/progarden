@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:progarden/firebasemodel/planta.dart';
+import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
+import 'package:progarden/plugins/storage/mobile_storage.dart';
 
 final municipioReference = FirebaseDatabase.instance.reference().child('planta');
 
@@ -14,10 +16,13 @@ class PlantaInformation extends StatefulWidget {
 
 class _PlantaInformationState extends State<PlantaInformation> {
   List<Planta> items;
+  String productImage;//imagen
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    productImage = widget.planta.imagen;//imagen
+    print(productImage);//imagen
   }
 
   @override
@@ -39,14 +44,36 @@ class _PlantaInformationState extends State<PlantaInformation> {
                     style: TextStyle(fontSize: 18.0),),
                   Padding(padding: EdgeInsets.only(top: 8.0),),
                   Divider(),
+
                   new Text("Nombre : ${widget.planta.nombre}",
                     style: TextStyle(fontSize: 18.0),),
                   Padding(padding: EdgeInsets.only(top: 8.0),),
                   Divider(),
+
                   new Text("Descripcion : ${widget.planta.descripcion}",
                     style: TextStyle(fontSize: 18.0),),
                   Padding(padding: EdgeInsets.only(top: 8.0),),
                   Divider(),
+
+                  new Text("Imagen : ${widget.planta.imagen}",
+                    style: TextStyle(fontSize: 18.0),),
+                  Padding(padding: EdgeInsets.only(top: 8.0),),
+                  Divider(),
+
+                  //inicio imagen
+                  Container(
+                    height: 300.0,
+                    width: 300.0,
+                    child: Center(
+                      child: productImage == ''
+                          ? Text('No Image')
+                          : Image.network(productImage+'?alt=media'),//nuevo para traer la imagen de firestore
+                    ),
+                  ),
+                  //fin imagen
+
+
+
                 ],
               ),
             ),
