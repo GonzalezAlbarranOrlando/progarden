@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:progarden/firebasemodel/planta.dart';
-import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
-import 'package:progarden/plugins/storage/mobile_storage.dart';
 
 final municipioReference = FirebaseDatabase.instance.reference().child('planta');
 
@@ -71,8 +69,6 @@ class _PlantaInformationState extends State<PlantaInformation> {
                     ),
                   ),
                   //fin imagen
-
-
 
                 ],
               ),
