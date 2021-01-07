@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:progarden/firebaseauth/authentication_service.dart';
+import 'package:progarden/main.dart';
 import 'package:provider/provider.dart';
 
 import 'creditos.dart';
@@ -17,7 +18,11 @@ class Menu_page_usuario extends StatelessWidget {
           backgroundColor: Colors.deepOrangeAccent,
           leading: IconButton(
             icon: Icon(Icons.clear),
-            onPressed: () => context.read<AuthenticationService>().signOut(),
+            onPressed:(){
+              context.read<AuthenticationService>().signOut();
+              Navigator.push(context, MaterialPageRoute(builder: (
+                  context) => MyApp()));
+            }
             //onPressed: () => _createNewMunicipio(context),
           ),
         ),

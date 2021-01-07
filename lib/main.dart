@@ -15,6 +15,7 @@ String id_firebaseAuth = "";
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  FirebaseDatabase.instance.setPersistenceEnabled(true);
   runApp(MyApp());
 }
 
@@ -108,12 +109,19 @@ class Login_page extends StatelessWidget {
                     ),
                     RaisedButton(
                       onPressed: () {
-                        if (!_formkey.currentState.validate()) {
-                          return;
+                        if (_formkey.currentState.validate()) {
+                          context.read<AuthenticationService>().signIn(
+                              email: emailController.text.trim(),
+                              password: passwordController.text.trim());
+                          if (correo_firebaseAuth == "consultor@gmail.com") {
+                            Navigator.push(context, MaterialPageRoute(builder: (
+                                context) => RegistroScreen()));
+                          } else if (correo_firebaseAuth != "") {
+                            Navigator.push(context, MaterialPageRoute(builder: (
+                                context) => Menu_page_usuario()));
+                            return Menu_page_usuario();
+                          }
                         }
-                        context.read<AuthenticationService>().signIn(
-                            email: emailController.text.trim(),
-                            password: passwordController.text.trim());
                       },
                       child: Text('Ingresar'),
                       color: Colors.deepOrangeAccent,
@@ -133,10 +141,7 @@ class Login_page extends StatelessWidget {
                           GestureDetector(
                             onTap: () {
                               //Navigator.of(context).pop(main());
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => RegistroScreen()));
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => RegistroScreen()));
                             },
                             child: Text(
                               "Registrarse",
