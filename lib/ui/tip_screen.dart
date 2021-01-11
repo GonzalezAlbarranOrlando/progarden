@@ -70,7 +70,7 @@ class _TipScreenState extends State<TipScreen> {
                     style: TextStyle(
                         fontSize: 17.0, color: Colors.deepOrangeAccent),
                     decoration: InputDecoration(
-                        icon: Icon(Icons.map), labelText: 'Titulo'),
+                        icon: Icon(Icons.featured_play_list), labelText: 'Titulo'),
                     validator: (text) {
                       if (text == null || text.isEmpty) {
                         return 'Campo obligatorio';
@@ -87,7 +87,7 @@ class _TipScreenState extends State<TipScreen> {
                     style: TextStyle(
                         fontSize: 17.0, color: Colors.deepOrangeAccent),
                     decoration: InputDecoration(
-                        icon: Icon(Icons.question_answer),
+                        icon: Icon(Icons.description),
                         labelText: 'Descripcion'),
                     validator: (text) {
                       if (text == null || text.isEmpty) {
