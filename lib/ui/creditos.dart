@@ -24,7 +24,7 @@ class Creditos extends StatelessWidget {
             },
           ),
         ),
-        body: Center(
+        body: SingleChildScrollView(
             child: Column(
               children: <Widget>[
 
@@ -44,7 +44,8 @@ class Creditos extends StatelessWidget {
                       "-GARCÍA SAAVEDRA AMÉRICA LUCERO\n"
                       "-GONZÁLEZ ALBARRÁN ORLANDO\n"
                       "-GONZÁLEZ VALLEJO ARIANA JAQUELIN\n\n"
-                      "Versión 1.0",
+                      "DOCENTE: PULIDO ALBA ROCÍO ELIZABETH\n\n"
+                      "Versión 1.0\n\n",
                     textAlign: TextAlign.center,
                     style: TextStyle(fontWeight: FontWeight.normal, fontSize: 15),
                   ),
