@@ -4,7 +4,6 @@ import 'package:progarden/firebaseauth/authentication_service.dart';
 import 'dart:async';
 import 'package:progarden/firebasemodel/tip.dart';
 import 'package:progarden/main.dart';
-import 'package:progarden/ui/menu_page_administrador.dart';
 import 'package:progarden/ui/plantas_information.dart';
 import 'package:progarden/ui/plantas_screen.dart';
 import 'package:progarden/ui/tip_information.dart';
@@ -56,7 +55,7 @@ class _ListViewTipsAdministradorState extends State<ListViewTipsAdministrador> {
             icon: Icon(Icons.arrow_back),
             onPressed: () {
               //context.read<AuthenticationService>().signOut();
-              Navigator.push(context, MaterialPageRoute(builder: (context) => Menu_page_administrador()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => Menu_page_usuario()));
             },
           ),
         ),
