@@ -84,6 +84,8 @@ class _TipScreenState extends State<TipScreen> {
                   Divider(),
                   TextFormField(
                     controller: _descripcionController,
+                    keyboardType: TextInputType.multiline,
+                    maxLines: null,
                     style: TextStyle(
                         fontSize: 17.0, color: Colors.deepOrangeAccent),
                     decoration: InputDecoration(
