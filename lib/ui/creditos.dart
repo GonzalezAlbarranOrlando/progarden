@@ -19,12 +19,11 @@ class Creditos extends StatelessWidget {
             icon: Icon(Icons.arrow_back),
             onPressed: () {
               //context.read<AuthenticationService>().signOut();
-              //Navigator.push(context, MaterialPageRoute(builder: (context) => Menu_page_usuario()));
-              Navigator.pop(context);
+              Navigator.push(context, MaterialPageRoute(builder: (context) => Menu_page_usuario()));
             },
           ),
         ),
-        body: SingleChildScrollView(
+        body: Center(
             child: Column(
               children: <Widget>[
 
@@ -44,8 +43,7 @@ class Creditos extends StatelessWidget {
                       "-GARCÍA SAAVEDRA AMÉRICA LUCERO\n"
                       "-GONZÁLEZ ALBARRÁN ORLANDO\n"
                       "-GONZÁLEZ VALLEJO ARIANA JAQUELIN\n\n"
-                      "Versión 1.0\n\n"
-                      "DOCENTE:  PULIDO ROCÍO ELIZABETH\n\n",
+                      "Versión 1.0",
                     textAlign: TextAlign.center,
                     style: TextStyle(fontWeight: FontWeight.normal, fontSize: 15),
                   ),
