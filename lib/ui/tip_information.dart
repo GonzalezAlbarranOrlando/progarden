@@ -35,14 +35,18 @@ class _TipInformationState extends State<TipInformation> {
             Center(
               child: Column(
                 children: <Widget>[
+                  new Text("ID : ${widget.tip.id}",
+                    style: TextStyle(fontSize: 18.0),),
+                  Padding(padding: EdgeInsets.only(top: 8.0),),
+                  Divider(),
 
-                  new Text("${widget.tip.titulo}",
-                    style: TextStyle(fontSize: 30.0,fontWeight: FontWeight.bold),),
+                  new Text("Nombre : ${widget.tip.titulo}",
+                    style: TextStyle(fontSize: 18.0,fontWeight: FontWeight.bold),),
                   Padding(padding: EdgeInsets.only(top: 10.0),),
                   Divider(),
 
-                  new Text("${widget.tip.descripcion}",
-                    style: TextStyle(fontSize: 20.0),),
+                  new Text("Descripcion : ${widget.tip.descripcion}",
+                    style: TextStyle(fontSize: 18.0),),
                   Padding(padding: EdgeInsets.only(top: 8.0),),
                   Divider(),
 

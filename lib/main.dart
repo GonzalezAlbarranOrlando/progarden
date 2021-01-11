@@ -4,7 +4,6 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:progarden/registro.dart';
-import 'package:progarden/ui/menu_page_administrador.dart';
 import 'package:progarden/ui/menu_page_usuario.dart';
 import 'package:provider/provider.dart';
 
@@ -49,11 +48,11 @@ class AuthenticationWrapper extends StatelessWidget {
   Widget build(BuildContext context) {
     final firebaseuser = context.watch<User>();
     if (firebaseuser != null) {
-      if (correo_firebaseAuth == "administrador@gmail.com") {
-        Fluttertoast.showToast(msg: "Bienvenido administrador");
-        return Menu_page_administrador();
+      if (correo_firebaseAuth == "consultor@gmail.com") {
+        Fluttertoast.showToast(msg: "Bienvenido Consultor");
+        return Menu_page_usuario();
       } else if (correo_firebaseAuth != "") {
-        Fluttertoast.showToast(msg: "Bienvenido usuario" + firebaseuser.uid);
+        Fluttertoast.showToast(msg: "Bienvenido:" + firebaseuser.uid);
         return Menu_page_usuario();
       }
     }
@@ -114,10 +113,13 @@ class Login_page extends StatelessWidget {
                           context.read<AuthenticationService>().signIn(
                               email: emailController.text.trim(),
                               password: passwordController.text.trim());
-                          if (correo_firebaseAuth == "administrador@gmail.com") {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => Menu_page_administrador()));
+                          if (correo_firebaseAuth == "consultor@gmail.com") {
+                            Navigator.push(context, MaterialPageRoute(builder: (
+                                context) => RegistroScreen()));
                           } else if (correo_firebaseAuth != "") {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => Menu_page_usuario()));
+                            Navigator.push(context, MaterialPageRoute(builder: (
+                                context) => Menu_page_usuario()));
+                            return Menu_page_usuario();
                           }
                         }
                       },

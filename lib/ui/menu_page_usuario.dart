@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:progarden/firebaseauth/authentication_service.dart';
 import 'package:progarden/main.dart';
 import 'package:progarden/ui/listview_tips_administrador.dart';
-import 'package:progarden/ui/listview_tips_usuario.dart';
 import 'package:progarden/ui/sensores_page.dart';
 import 'package:provider/provider.dart';
 
@@ -73,7 +72,7 @@ class Menu_page_usuario extends StatelessWidget {
                 onPressed: () {
                   //Fluttertoast.showToast(msg: "");
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => ListViewTipsUsuario()));
+                      MaterialPageRoute(builder: (context) => ListViewTipsAdministrador()));
                 },
                 child: Text('Tips'),
               ),
@@ -89,7 +88,7 @@ class Menu_page_usuario extends StatelessWidget {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => Creditos()));
                 },
-                child: Text('Créditos'),
+                child: Text('Creditos'),
               ),
             ),
           ],
