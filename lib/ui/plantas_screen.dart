@@ -255,6 +255,7 @@ class _PlantaScreenState extends State<PlantaScreen> {
                             Navigator.pop(context);
                           });
                         }
+                        Navigator.pop(context);
                       },
                       child: (widget.planta.id != null)
                           ? Text('Actualizar')

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:progarden/firebaseauth/authentication_service.dart';
 import 'package:progarden/main.dart';
+import 'package:progarden/ui/listview_tips_administrador.dart';
 import 'package:progarden/ui/sensores_page.dart';
 import 'package:provider/provider.dart';
 
@@ -60,6 +61,20 @@ class Menu_page_usuario extends StatelessWidget {
                       MaterialPageRoute(builder: (context) => Sensores_page()));
                 },
                 child: Text('Sensores'),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 5.0),
+            ),
+            new SizedBox(
+              width: 200.0,
+              child: new RaisedButton(
+                onPressed: () {
+                  //Fluttertoast.showToast(msg: "");
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => ListViewTipsAdministrador()));
+                },
+                child: Text('Tips'),
               ),
             ),
             Padding(
