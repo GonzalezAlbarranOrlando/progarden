@@ -111,14 +111,14 @@ class _TipScreenState extends State<TipScreen> {
                             'titulo': _tituloController.text,
                             'descripcion': _descripcionController.text,
                           }).then((_) {
-                            Navigator.pop(context);
+                            //Navigator.pop(context);
                           });
                         } else {
                           tipReference.push().set({
                             'titulo': _tituloController.text,
                             'descripcion': _descripcionController.text,
                           }).then((_) {
-                            Navigator.pop(context);
+                            //Navigator.pop(context);
                           });
                         }
                         Navigator.pop(context);

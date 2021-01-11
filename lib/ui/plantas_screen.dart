@@ -218,7 +218,7 @@ class _PlantaScreenState extends State<PlantaScreen> {
                             'imagen': '$fullPathImage'
                           }).then((_) {
                             file_image = null;
-                            Navigator.pop(context);
+                            //Navigator.pop(context);
                           });
                         } else {
                           //nuevo imagen
@@ -252,7 +252,7 @@ class _PlantaScreenState extends State<PlantaScreen> {
                             'imagen': '$fullPathImage' //nuevo imagen
                           }).then((_) {
                             file_image = null;
-                            Navigator.pop(context);
+                            //Navigator.pop(context);
                           });
                         }
                         Navigator.pop(context);
