@@ -4,7 +4,6 @@ import 'package:progarden/firebaseauth/authentication_service.dart';
 import 'dart:async';
 import 'package:progarden/firebasemodel/tip.dart';
 import 'package:progarden/main.dart';
-import 'package:progarden/ui/menu_page_administrador.dart';
 import 'package:progarden/ui/plantas_information.dart';
 import 'package:progarden/ui/plantas_screen.dart';
 import 'package:progarden/ui/tip_information.dart';
@@ -16,12 +15,12 @@ import 'menu_page_usuario.dart';
 
 final tipsReference = FirebaseDatabase.instance.reference().child('tip');
 
-class ListViewTipsAdministrador extends StatefulWidget {
+class ListViewTipsUsuario extends StatefulWidget {
   @override
-  _ListViewTipsAdministradorState createState() => _ListViewTipsAdministradorState();
+  _ListViewTipsUsuarioState createState() => _ListViewTipsUsuarioState();
 }
 
-class _ListViewTipsAdministradorState extends State<ListViewTipsAdministrador> {
+class _ListViewTipsUsuarioState extends State<ListViewTipsUsuario> {
   List<Tip> items;
   StreamSubscription<Event> _onTipAddedSubscription;
   StreamSubscription<Event> _onTipChangedSubscription;
@@ -56,7 +55,7 @@ class _ListViewTipsAdministradorState extends State<ListViewTipsAdministrador> {
             icon: Icon(Icons.arrow_back),
             onPressed: () {
               //context.read<AuthenticationService>().signOut();
-              Navigator.push(context, MaterialPageRoute(builder: (context) => Menu_page_administrador()));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => Menu_page_usuario()));
             },
           ),
         ),
@@ -106,33 +105,14 @@ class _ListViewTipsAdministradorState extends State<ListViewTipsAdministrador> {
                               onTap: () => _navigateToPlanta(
                                   context, items[position])),
                         ),
-                        IconButton(
-                            icon: Icon(
-                              Icons.delete,
-                              color: Colors.red,
-                            ),
-                            onPressed: () => _deleteTip(context, items[position], position)),
-                        IconButton(
-                            icon: Icon(
-                              Icons.edit,
-                              color: Colors.greenAccent,
-                            ),
-                            onPressed: () => _navigateToPlantaInformation(
-                                context, items[position])),
+
+
                       ],
                     ),
                   ],
                 );
 
               }),
-        ),
-        floatingActionButton: FloatingActionButton(
-          child: Icon(
-            Icons.add,
-            color: Colors.white,
-          ),
-          backgroundColor: Colors.amber,
-          onPressed: () => _createNewPlanta(context),
         ),
       ),
     );

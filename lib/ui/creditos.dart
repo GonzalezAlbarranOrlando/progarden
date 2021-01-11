@@ -19,7 +19,8 @@ class Creditos extends StatelessWidget {
             icon: Icon(Icons.arrow_back),
             onPressed: () {
               //context.read<AuthenticationService>().signOut();
-              Navigator.push(context, MaterialPageRoute(builder: (context) => Menu_page_usuario()));
+              //Navigator.push(context, MaterialPageRoute(builder: (context) => Menu_page_usuario()));
+              Navigator.pop(context);
             },
           ),
         ),
