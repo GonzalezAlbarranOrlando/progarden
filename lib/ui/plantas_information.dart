@@ -38,24 +38,19 @@ class _PlantaInformationState extends State<PlantaInformation> {
             Center(
               child: Column(
                 children: <Widget>[
-                  new Text("ID : ${widget.planta.id}",
-                    style: TextStyle(fontSize: 18.0),),
-                  Padding(padding: EdgeInsets.only(top: 8.0),),
+                  new Text("[ ${widget.planta.id} ]",
+                    style: TextStyle(fontSize: 15.0),),
+                  Padding(padding: EdgeInsets.only(top: 10.0),),
                   Divider(),
 
                   new Text("Nombre : ${widget.planta.nombre}",
-                    style: TextStyle(fontSize: 18.0),),
-                  Padding(padding: EdgeInsets.only(top: 8.0),),
+                    style: TextStyle(fontSize: 20.0),),
+                  Padding(padding: EdgeInsets.only(top: 10.0),),
                   Divider(),
 
                   new Text("Descripcion : ${widget.planta.descripcion}",
-                    style: TextStyle(fontSize: 18.0),),
-                  Padding(padding: EdgeInsets.only(top: 8.0),),
-                  Divider(),
-
-                  new Text("Imagen : ${widget.planta.imagen}",
-                    style: TextStyle(fontSize: 18.0),),
-                  Padding(padding: EdgeInsets.only(top: 8.0),),
+                    style: TextStyle(fontSize: 20.0),),
+                  Padding(padding: EdgeInsets.only(top: 10.0),),
                   Divider(),
 
                   //inicio imagen
@@ -69,6 +64,11 @@ class _PlantaInformationState extends State<PlantaInformation> {
                     ),
                   ),
                   //fin imagen
+
+                  new Text("[${widget.planta.imagen}]",
+                    style: TextStyle(fontSize: 15.0),),
+                  Padding(padding: EdgeInsets.only(top: 10.0),),
+                  Divider(),
 
                 ],
               ),

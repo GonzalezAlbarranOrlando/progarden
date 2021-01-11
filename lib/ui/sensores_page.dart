@@ -68,7 +68,7 @@ class _Sensores_pageState extends State<Sensores_page> {
                 ),
                 Container(
                   child:
-                  Text("Temperatura: $temperatura °C\n\nHumedad: $humedad %\n\nHumedad tierra: $humedad_tierra%",
+                  Text("Temperatura\n$temperatura °C\n\nHumedad\n$humedad %\n\nHumedad tierra\n$humedad_tierra%",
                     textAlign: TextAlign.center,
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
                   ),

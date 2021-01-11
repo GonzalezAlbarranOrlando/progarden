@@ -32,22 +32,22 @@ class _TipInformationState extends State<TipInformation> {
         padding: const EdgeInsets.all(20.0),
         child: ListView(
           children: [
-            Center(
+            SingleChildScrollView(
               child: Column(
                 children: <Widget>[
-                  new Text("ID : ${widget.tip.id}",
-                    style: TextStyle(fontSize: 18.0),),
-                  Padding(padding: EdgeInsets.only(top: 8.0),),
-                  Divider(),
-
-                  new Text("Nombre : ${widget.tip.titulo}",
-                    style: TextStyle(fontSize: 18.0,fontWeight: FontWeight.bold),),
+                  new Text("[ ${widget.tip.id} ]",
+                    style: TextStyle(fontSize: 15.0),),
                   Padding(padding: EdgeInsets.only(top: 10.0),),
                   Divider(),
 
-                  new Text("Descripcion : ${widget.tip.descripcion}",
-                    style: TextStyle(fontSize: 18.0),),
-                  Padding(padding: EdgeInsets.only(top: 8.0),),
+                  new Text("${widget.tip.titulo}",
+                    style: TextStyle(fontSize: 35.0,fontWeight: FontWeight.bold),),
+                  Padding(padding: EdgeInsets.only(top: 10.0),),
+                  Divider(),
+
+                  new Text("${widget.tip.descripcion}",
+                    style: TextStyle(fontSize: 25.0),),
+                  Padding(padding: EdgeInsets.only(top: 10.0),),
                   Divider(),
 
                 ],
